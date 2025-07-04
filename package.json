@@ -16,14 +16,18 @@
     "expo-status-bar": "~2.2.3",
     "react": "19.0.0",
     "react-native": "0.79.5",
+    "react-native-gesture-handler": "~2.24.0",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
-    "react-native-gesture-handler": "~2.24.0"
+    "react-dom": "19.0.0",
+    "react-native-web": "^0.20.0",
+    "@expo/metro-runtime": "~5.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@types/react": "~19.0.10",
-    "typescript": "~5.8.3"
+    "typescript": "~5.8.3",
+    "vite": "^7.0.2"
   },
   "private": true
 }
