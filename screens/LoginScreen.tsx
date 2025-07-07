@@ -1,9 +1,44 @@
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, Alert } from 'react-native';
+import { auth } from '../firebase/Config';
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}:any) {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
+
+
+    function login() {
+
+        signInWithEmailAndPassword(auth, user, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+
+                navigation.navigate('LeerUsuarios')
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+
+            });
+
+    }
+
+    function restablecer() {
+        sendPasswordResetEmail(auth, user)
+            .then(() => {
+                // Password reset email sent!
+                // ..
+                Alert.alert("Mensaje", "Verificar correo Electronico")
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
+    }
 
 
     return (
@@ -15,7 +50,6 @@ export default function LoginScreen() {
                 placeholder="Usuario"
                 value={user}
                 onChangeText={setUser}
-                autoCapitalize="none"
             />
 
             <TextInput
@@ -33,8 +67,12 @@ export default function LoginScreen() {
                         padding: 15,
                         alignItems: 'center',
                     }}
+                    onPress={()=> login()}
                 >
                     <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 16 }}>Entrar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => restablecer()}>
+                      <Text style={{ fontSize: 25, color: 'blue' }} >Olvidaste la contraseña</Text>
                 </TouchableOpacity>
             </View>
         </View>
