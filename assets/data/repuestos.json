@@ -1,0 +1,92 @@
+{
+    "Toyota": [
+        {
+            "nombre": "Filtro de aceite",
+            "marca": "Toyota",
+            "descripcion": "Filtro original para motores 1.8L",
+            "precio": 15.99,
+            "stock": 25
+        },
+        {
+            "nombre": "Pastillas de freno",
+            "marca": "TRD",
+            "descripcion": "Juego de pastillas de freno de alto rendimiento",
+            "precio": 45.50,
+            "stock": 40
+        },
+        {
+            "nombre": "Radiador",
+            "marca": "Denso",
+            "descripcion": "Radiador de aluminio con núcleo reforzado",
+            "precio": 120.00,
+            "stock": 10
+        },
+        {
+            "nombre": "Batería 12V 45Ah",
+            "marca": "Panasonic",
+            "descripcion": "Batería libre de mantenimiento de alta duración",
+            "precio": 89.99,
+            "stock": 15
+        }
+    ],
+    "Hyundai": [
+        {
+            "nombre": "Bujías de encendido",
+            "marca": "NGK",
+            "descripcion": "Bujías premium para mejor rendimiento",
+            "precio": 9.99,
+            "stock": 50
+        },
+        {
+            "nombre": "Amortiguadores delanteros",
+            "marca": "Monroe",
+            "descripcion": "Amortiguadores hidráulicos para una conducción suave",
+            "precio": 79.90,
+            "stock": 20
+        },
+        {
+            "nombre": "Filtro de cabina",
+            "marca": "Hyundai",
+            "descripcion": "Filtro antipolvo y polen para sistema de aire acondicionado",
+            "precio": 18.25,
+            "stock": 35
+        },
+        {
+            "nombre": "Sensor de oxígeno",
+            "marca": "Bosch",
+            "descripcion": "Sensor para optimizar la mezcla aire-combustible",
+            "precio": 42.30,
+            "stock": 18
+        }
+    ],
+    "Chevrolet": [
+        {
+            "nombre": "Filtro de aire",
+            "marca": "ACDelco",
+            "descripcion": "Filtro de aire OEM para mejor flujo de aire al motor",
+            "precio": 12.75,
+            "stock": 30
+        },
+        {
+            "nombre": "Correa de distribución",
+            "marca": "Gates",
+            "descripcion": "Correa de alta resistencia para motores 1.6L",
+            "precio": 34.20,
+            "stock": 12
+        },
+        {
+            "nombre": "Sensor de temperatura",
+            "marca": "Delphi",
+            "descripcion": "Sensor preciso para monitoreo de temperatura del motor",
+            "precio": 19.80,
+            "stock": 27
+        },
+        {
+            "nombre": "Bomba de combustible",
+            "marca": "Bosch",
+            "descripcion": "Bomba eléctrica para suministro constante de combustible",
+            "precio": 97.45,
+            "stock": 8
+        }
+    ]
+}
