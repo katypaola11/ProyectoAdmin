@@ -4,8 +4,7 @@ import React from 'react';
 export default function HomeScreen({navigation}: any) {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Firebase CRUD Demo</Text>
-      <Text style={styles.subtitle}>Aprende a crear, leer, actualizar y eliminar datos</Text>
+      <Text style={styles.title}>Firebase CRUD </Text>
       
       <View style={styles.cardContainer}>
 
@@ -15,10 +14,16 @@ export default function HomeScreen({navigation}: any) {
           <Text style={styles.cardDescription}>Añade nuevos registros a la base de datos</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.card, styles.readCard]} onPress={()=> navigation.navigate("Leer") }>
+        <TouchableOpacity style={[styles.card, styles.readCard]} onPress={()=> navigation.navigate("Repuestos") }>
           <Text style={styles.cardIcon}>👀</Text>
           <Text style={styles.cardTitle}>Read</Text>
-          <Text style={styles.cardDescription}>Consulta datos desde Firebase</Text>
+          <Text style={styles.cardDescription}>Consulta datos de Repuestos</Text>
+        </TouchableOpacity>
+
+         <TouchableOpacity style={[styles.card, styles.readCard]} onPress={()=> navigation.navigate("Usuarios") }>
+          <Text style={styles.cardIcon}>👀</Text>
+          <Text style={styles.cardTitle}>Read</Text>
+          <Text style={styles.cardDescription}>Consulta datos de Usuarios</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.card, styles.updateCard]} onPress={()=> navigation.navigate("Editar") }>
