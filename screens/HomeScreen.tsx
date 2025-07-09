@@ -8,7 +8,7 @@ export default function HomeScreen({navigation}: any) {
       
       <View style={styles.cardContainer}>
 
-        <TouchableOpacity style={[styles.card, styles.createCard]} onPress={()=> navigation.navigate("Guardar") }>
+        <TouchableOpacity style={[styles.card, styles.createCard]} onPress={()=> navigation.navigate("GuardarScreen") }>
           <Text style={styles.cardIcon}>➕</Text>
           <Text style={styles.cardTitle}>Create</Text>
           <Text style={styles.cardDescription}>Añade nuevos registros a la base de datos</Text>
