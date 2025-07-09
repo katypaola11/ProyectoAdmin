@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
 export default function Marcas(props:any) {
@@ -16,6 +16,7 @@ export default function Marcas(props:any) {
 
             
             <Text style={styles.txt}>{props.info.nombre}</Text>
+            <Image style={styles.img} source={{uri:props.info.imagen}}></Image>
             <Text style={styles.txt}>{props.info.descripcion}  </Text>
             <Text style={styles.txt}>{props.info.precio}  </Text>
             <Text style={styles.txt}>{props.info.stock}  </Text>
@@ -33,5 +34,9 @@ const styles = StyleSheet.create({
     btn:{
         borderRadius: 10
 
+    },
+    img:{
+        height: 100,
+        width:100
     }
 })

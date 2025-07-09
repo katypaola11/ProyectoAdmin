@@ -2,6 +2,7 @@
     "Toyota": [
         {
             "nombre": "Filtro de aceite",
+            "imagen": "https://www.mansuera.com/uploads/productos/b77f2bd82df84b78e2f5666618e7ab899812b840.jpeg?v20250604_01",
             "marca": "Toyota",
             "descripcion": "Filtro original para motores 1.8L",
             "precio": 15.99,
@@ -9,6 +10,7 @@
         },
         {
             "nombre": "Pastillas de freno",
+            "imagen": "https://st4.depositphotos.com/11914024/31378/i/450/depositphotos_313784070-stock-photo-brake-pad-for-a-passenger.jpg",
             "marca": "TRD",
             "descripcion": "Juego de pastillas de freno de alto rendimiento",
             "precio": 45.50,
@@ -16,6 +18,7 @@
         },
         {
             "nombre": "Radiador",
+            "imagen": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Automobile_radiator.jpg",
             "marca": "Denso",
             "descripcion": "Radiador de aluminio con núcleo reforzado",
             "precio": 120.00,
@@ -23,6 +26,7 @@
         },
         {
             "nombre": "Batería 12V 45Ah",
+            "imagen": "https://image.made-in-china.com/2f0j00jlWgtmHnCVpI/Maintenance-Free-Car-Battery-12V-45ah-MF-DIN45-Good-Starting-Auto-Battery.jpg",
             "marca": "Panasonic",
             "descripcion": "Batería libre de mantenimiento de alta duración",
             "precio": 89.99,
@@ -32,6 +36,7 @@
     "Hyundai": [
         {
             "nombre": "Bujías de encendido",
+            "imagen": "https://d35y5t5rad2lom.cloudfront.net/images/upload/74672/card/65d62217c8c586.91738038.jpg",
             "marca": "NGK",
             "descripcion": "Bujías premium para mejor rendimiento",
             "precio": 9.99,
@@ -39,6 +44,7 @@
         },
         {
             "nombre": "Amortiguadores delanteros",
+            "imagen": "https://m.media-amazon.com/images/I/71mnvRRNPwL.jpg",
             "marca": "Monroe",
             "descripcion": "Amortiguadores hidráulicos para una conducción suave",
             "precio": 79.90,
@@ -46,6 +52,7 @@
         },
         {
             "nombre": "Filtro de cabina",
+            "imagen": "https://www.sicar.cl/wp-content/uploads/2019/06/filtros_cabina3_900x600.jpg",
             "marca": "Hyundai",
             "descripcion": "Filtro antipolvo y polen para sistema de aire acondicionado",
             "precio": 18.25,
@@ -53,6 +60,7 @@
         },
         {
             "nombre": "Sensor de oxígeno",
+            "imagen": "https://thumbs.dreamstime.com/b/sensor-del-ox%C3%ADgeno-43544911.jpg",
             "marca": "Bosch",
             "descripcion": "Sensor para optimizar la mezcla aire-combustible",
             "precio": 42.30,
@@ -62,6 +70,7 @@
     "Chevrolet": [
         {
             "nombre": "Filtro de aire",
+            "imagen": "https://www.bridgestone.com.mx/content/dam/consumer/bst/la/tips-bridgestone/cuidado-de-las-llantas/filtro_aire.jpg",
             "marca": "ACDelco",
             "descripcion": "Filtro de aire OEM para mejor flujo de aire al motor",
             "precio": 12.75,
@@ -69,6 +78,7 @@
         },
         {
             "nombre": "Correa de distribución",
+            "imagen": "https://noticias.coches.com/wp-content/uploads/2019/03/Correa-de-Distribuci%C3%B3n-2.jpg",
             "marca": "Gates",
             "descripcion": "Correa de alta resistencia para motores 1.6L",
             "precio": 34.20,
@@ -76,6 +86,7 @@
         },
         {
             "nombre": "Sensor de temperatura",
+            "imagen": "http://todomicro.com.ar/10020-large_default/sensor-de-temperatura-ds18b20.jpg",
             "marca": "Delphi",
             "descripcion": "Sensor preciso para monitoreo de temperatura del motor",
             "precio": 19.80,
@@ -83,6 +94,7 @@
         },
         {
             "nombre": "Bomba de combustible",
+            "imagen": "https://static.wixstatic.com/media/9988e4_26b613fc86fd4ebe88edb43eff2ce6e7~mv2.jpg/v1/fill/w_568,h_358,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/9988e4_26b613fc86fd4ebe88edb43eff2ce6e7~mv2.jpg",
             "marca": "Bosch",
             "descripcion": "Bomba eléctrica para suministro constante de combustible",
             "precio": 97.45,
