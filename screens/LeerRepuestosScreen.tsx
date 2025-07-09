@@ -1,141 +1,121 @@
-import { FlatList, StyleSheet, Text, View, ScrollView } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 import Marcas from '../components/Marcas';
-import datos from '../assets/data/repuestos.json'
+import datos from '../assets/data/repuestos.json';
+
+const secciones = [
+  { titulo: 'TOYOTA', data: datos.Toyota },
+  { titulo: 'CHEVROLET', data: datos.Chevrolet },
+  { titulo: 'HYUNDAI', data: datos.Hyundai },
+];
 
 export default function LeerRepuestosScreen() {
-    return (
-        <ScrollView style={styles.container}>
-            <View style={styles.headerContainer}>
-                <Text style={styles.headerText}>REPUESTOS PREMIUM</Text>
-                <View style={styles.headerLine} />
-                <Text style={styles.subHeaderText}>Calidad y Confianza</Text>
-            </View>
-
-            <View style={styles.brandSection}>
-                <View style={styles.brandHeader}>
-                    <Text style={styles.brandTitle}>TOYOTA</Text>
-                    <View style={styles.brandAccent} />
-                </View>
-                <View style={styles.listContainer}>
-                    <FlatList
-                        data={datos.Toyota}
-                        renderItem={({ item }) => <Marcas info={item} />}
-                        showsVerticalScrollIndicator={false}
-                        style={styles.flatList}
-                    />
-                </View>
-            </View>
-
-            <View style={styles.brandSection}>
-                <View style={styles.brandHeader}>
-                    <Text style={styles.brandTitle}>CHEVROLET</Text>
-                    <View style={styles.brandAccent} />
-                </View>
-                <View style={styles.listContainer}>
-                    <FlatList
-                        data={datos.Chevrolet}
-                        renderItem={({ item }) => <Marcas info={item} />}
-                        showsVerticalScrollIndicator={false}
-                        style={styles.flatList}
-                    />
-                </View>
-            </View>
-
-            <View style={styles.brandSection}>
-                <View style={styles.brandHeader}>
-                    <Text style={styles.brandTitle}>HYUNDAI</Text>
-                    <View style={styles.brandAccent} />
-                </View>
-                <View style={styles.listContainer}>
-                    <FlatList
-                        data={datos.Hyundai}
-                        renderItem={({ item }) => <Marcas info={item} />}
-                        showsVerticalScrollIndicator={false}
-                        style={styles.flatList}
-                    />
-                </View>
-            </View>
-        </ScrollView>
-    )
+  return (
+    <FlatList
+      ListHeaderComponent={
+        <View style={styles.headerContainer}>
+          <Text style={styles.headerText}>LISTA DE REPUESTOS</Text>
+          <View style={styles.headerLine} />
+          <Text style={styles.subHeaderText}>Calidad y Confianza</Text>
+        </View>
+      }
+      data={secciones}
+      keyExtractor={(item) => item.titulo}
+      renderItem={({ item }) => (
+        <View style={styles.brandSection}>
+          <View style={styles.brandHeader}>
+            <Text style={styles.brandTitle}>{item.titulo}</Text>
+            <View style={styles.brandAccent} />
+          </View>
+          <View style={styles.listContainer}>
+            {item.data.map((rep, index) => (
+              <Marcas key={index} info={rep} />
+            ))}
+          </View>
+        </View>
+      )}
+      contentContainerStyle={styles.container}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F8F9FA', 
-        paddingHorizontal: 20,
-    },
-    headerContainer: {
-        paddingTop: 50,
-        paddingBottom: 40,
-        alignItems: 'center',
-        borderBottomWidth: 1,
-        borderBottomColor: '#2C5F75', 
-        marginBottom: 30,
-    },
-    headerText: {
-        fontSize: 32,
-        fontWeight: '100', 
-        color: '#1A2332',
-        letterSpacing: 4,
-        textAlign: 'center',
-    },
-    headerLine: {
-        width: 100,
-        height: 2,
-        backgroundColor: '#2C5F75',
-        marginVertical: 15,
-    },
-    subHeaderText: {
-        fontSize: 16,
-        color: '#5A6C7D',
-        fontWeight: '300',
-        letterSpacing: 2,
-        textTransform: 'uppercase',
-    },
-    brandSection: {
-        marginBottom: 40,
-        backgroundColor: '#FFFFFF',
-        borderRadius: 12,
-        overflow: 'hidden',
-        shadowColor: '#2C5F75',
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 12,
-        elevation: 8,
-        borderWidth: 1,
-        borderColor: '#E8ECEF',
-    },
-    brandHeader: {
-        backgroundColor: '#2C5F75',
-        paddingVertical: 20,
-        paddingHorizontal: 25,
-        borderLeftWidth: 4,
-        borderLeftColor: '#D4B068', 
-    },
-    brandTitle: {
-        fontSize: 24,
-        fontWeight: '200',
-        color: '#FFFFFF',
-        letterSpacing: 3,
-        marginBottom: 5,
-    },
-    brandAccent: {
-        width: 50,
-        height: 1,
-        backgroundColor: '#D4B068',
-    },
-    listContainer: {
-        backgroundColor: '#FFFFFF',
-        paddingVertical: 15,
-        paddingHorizontal: 20,
-    },
-    flatList: {
-        backgroundColor: 'transparent',
-    },
-})
+  container: {
+    padding: 16,
+    backgroundColor: '#F3F4F6', 
+  },
+
+  headerContainer: {
+    alignItems: 'center',
+    marginBottom: 32,
+    paddingTop: 40,
+    paddingBottom: 16,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.06,
+    shadowRadius: 2,
+  },
+  headerText: {
+    fontSize: 26,
+    fontWeight: '700',
+    color: '#1E293B',
+    letterSpacing: 1.5,
+  },
+  headerLine: {
+    width: 60,
+    height: 3,
+    backgroundColor: '#3B82F6',
+    marginVertical: 10,
+    borderRadius: 2,
+  },
+  subHeaderText: {
+    fontSize: 13,
+    color: '#6B7280',
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+  },
+
+
+  brandSection: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    marginBottom: 20,
+    overflow: 'hidden',
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 4,
+  },
+  brandHeader: {
+    backgroundColor: '#2563EB',
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+  },
+  brandTitle: {
+    color: '#FFFFFF',
+    fontSize: 20,
+    fontWeight: '600',
+    letterSpacing: 1,
+  },
+  brandAccent: {
+    marginTop: 6,
+    width: 35,
+    height: 2,
+    backgroundColor: '#60A5FA',
+  },
+
+  listContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    backgroundColor: '#FFFFFF',
+  },
+});
+
+
+        
+  
 

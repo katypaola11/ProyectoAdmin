@@ -8,6 +8,9 @@ import LeerUsuariosScreen from '../screens/LeerUsuariosScreen';
 import RegistroAdmin from '../screens/RegistroAdmin';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen";
+import GuardarScreens from "../screens/GuardarScreen";
+import EditarScreen from "../screens/EditarScreen";
+import BorrarScreen from "../screens/BorrarScreen";
 
 
 
@@ -35,6 +38,10 @@ function MyStack() {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Usuarios" component={LeerUsuariosScreen} />
       <Stack.Screen name="Repuestos" component={LeerRepuestosScreen} />
+      <Stack.Screen name="Guardar" component={GuardarScreens} />
+      <Stack.Screen name="Editar" component={EditarScreen} />
+      <Stack.Screen name="Eliminar" component={BorrarScreen} />
+
       
     </Stack.Navigator>
   );
