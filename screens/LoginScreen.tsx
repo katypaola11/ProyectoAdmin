@@ -15,7 +15,7 @@ export default function LoginScreen({navigation}:any) {
                 // Signed in 
                 const user = userCredential.user;
 
-                navigation.navigate('LeerUsuarios')
+                navigation.navigate('Home')
                 // ...
             })
             .catch((error) => {
