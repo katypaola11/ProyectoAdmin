@@ -14,9 +14,9 @@ export default function LeerRepuestosScreen() {
     <FlatList
       ListHeaderComponent={
         <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>LISTA DE REPUESTOS</Text>
+          <Text style={styles.headerText}>Repuestos Disponibles</Text>
           <View style={styles.headerLine} />
-          <Text style={styles.subHeaderText}>Calidad y Confianza</Text>
+          <Text style={styles.subHeaderText}>Calidad garantizada</Text>
         </View>
       }
       data={secciones}
@@ -42,80 +42,79 @@ export default function LeerRepuestosScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: '#F3F4F6', 
+    backgroundColor: '#1a1a1a',
   },
 
   headerContainer: {
     alignItems: 'center',
-    marginBottom: 32,
+    marginBottom: 30,
     paddingTop: 40,
-    paddingBottom: 16,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 12,
-    elevation: 2,
+    paddingBottom: 20,
+    backgroundColor: '#2c2c2c',
+    borderRadius: 14,
+    elevation: 4,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.06,
-    shadowRadius: 2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
   },
   headerText: {
-    fontSize: 26,
-    fontWeight: '700',
-    color: '#1E293B',
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#ffffff',
     letterSpacing: 1.5,
   },
   headerLine: {
-    width: 60,
+    width: 50,
     height: 3,
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#4CAF50',
     marginVertical: 10,
     borderRadius: 2,
   },
   subHeaderText: {
-    fontSize: 13,
-    color: '#6B7280',
+    fontSize: 12,
+    color: '#aaa',
     textTransform: 'uppercase',
     letterSpacing: 1,
   },
 
-
   brandSection: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#2c2c2c',
     borderRadius: 12,
     marginBottom: 20,
     overflow: 'hidden',
-    elevation: 4,
+    elevation: 5,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
+    shadowOpacity: 0.3,
     shadowRadius: 4,
   },
   brandHeader: {
-    backgroundColor: '#2563EB',
+    backgroundColor: '#4CAF50',
     paddingVertical: 14,
     paddingHorizontal: 20,
   },
   brandTitle: {
-    color: '#FFFFFF',
-    fontSize: 20,
-    fontWeight: '600',
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '700',
     letterSpacing: 1,
   },
   brandAccent: {
     marginTop: 6,
     width: 35,
     height: 2,
-    backgroundColor: '#60A5FA',
+    backgroundColor: '#A5D6A7',
   },
 
   listContainer: {
     paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#2c2c2c',
   },
 });
 
 
-        
-  
+
+
 

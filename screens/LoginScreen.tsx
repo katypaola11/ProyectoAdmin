@@ -1,45 +1,56 @@
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, Alert } from 'react-native';
+import {
+    View,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    StyleSheet,
+    Alert,
+} from 'react-native';
 import { auth } from '../firebase/Config';
 
-export default function LoginScreen({navigation}:any) {
+export default function LoginScreen({ navigation }: any) {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
 
-
     function login() {
-
         signInWithEmailAndPassword(auth, user, password)
             .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-
-                navigation.navigate('Home')
-                // ...
+                navigation.navigate('Home');
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-
+                switch (error.code) {
+                    case 'auth/invalid-email':
+                        Alert.alert('Error', 'El correo electrónico no es válido.');
+                        break;
+                    case 'auth/user-not-found':
+                        Alert.alert('Error', 'Usuario no registrado.');
+                        break;
+                    case 'auth/wrong-password':
+                        Alert.alert('Error', 'Contraseña incorrecta.');
+                        break;
+                    default:
+                        Alert.alert('Error', 'Credenciales incorrectas o error inesperado.');
+                        console.error(error);
+                }
             });
-
     }
+
 
     function restablecer() {
+        if (!user) {
+            Alert.alert('Atención', 'Ingresa tu correo antes de solicitar recuperación.');
+            return;
+        }
         sendPasswordResetEmail(auth, user)
             .then(() => {
-                // Password reset email sent!
-                // ..
-                Alert.alert("Mensaje", "Verificar correo Electronico")
+                Alert.alert('Mensaje', 'Verifica tu correo electrónico para restablecer la contraseña.');
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // ..
+                Alert.alert('Error', 'No se pudo enviar el correo. Revisa el correo ingresado.');
             });
     }
-
 
     return (
         <View style={styles.container}>
@@ -47,9 +58,12 @@ export default function LoginScreen({navigation}:any) {
 
             <TextInput
                 style={styles.input}
-                placeholder="Usuario"
+                placeholder="Correo electrónico"
                 value={user}
                 onChangeText={setUser}
+                placeholderTextColor="#aaa"
+                keyboardType="email-address"
+                autoCapitalize="none"
             />
 
             <TextInput
@@ -58,64 +72,62 @@ export default function LoginScreen({navigation}:any) {
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry
+                placeholderTextColor="#aaa"
             />
 
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                    style={{
-                        backgroundColor: '#2980b9',
-                        padding: 15,
-                        alignItems: 'center',
-                    }}
-                    onPress={()=> login()}
-                >
-                    <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 16 }}>Entrar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => restablecer()}>
-                      <Text style={{ fontSize: 25, color: 'blue' }} >Olvidaste la contraseña</Text>
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity style={styles.button} onPress={login}>
+                <Text style={styles.buttonText}>Entrar</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={restablecer}>
+                <Text style={styles.linkText}>¿Olvidaste tu contraseña?</Text>
+            </TouchableOpacity>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        padding: 25,
-        backgroundColor: '#f7f9fc',
         flex: 1,
+        backgroundColor: '#1a1a1a',
+        padding: 20,
         justifyContent: 'center',
     },
     titulo: {
         fontSize: 26,
         fontWeight: 'bold',
+        color: '#fff',
         marginBottom: 30,
         textAlign: 'center',
-        color: '#2c3e50',
     },
     input: {
-        backgroundColor: '#fff',
-        borderColor: '#ccc',
-        borderWidth: 1,
-        padding: 12,
+        backgroundColor: '#2c2c2c',
+        padding: 15,
+        borderRadius: 10,
         marginBottom: 15,
-        borderRadius: 8,
         fontSize: 16,
-        elevation: 1,
+        color: '#fff',
+        borderWidth: 1,
+        borderColor: '#444',
     },
-    switchContainer: {
-        flexDirection: 'row',
+    button: {
+        backgroundColor: '#4CAF50',
+        padding: 15,
+        borderRadius: 10,
         alignItems: 'center',
-        marginBottom: 25,
+        marginVertical: 10,
     },
-    switchLabel: {
-        marginLeft: 10,
+    buttonText: {
+        color: '#fff',
+        fontWeight: '600',
+        fontSize: 16,
+    },
+    linkText: {
+        color: '#4CAF50',
+        textAlign: 'center',
+        marginTop: 15,
         fontSize: 14,
-        color: '#34495e',
-        flexShrink: 1,
-    },
-    buttonContainer: {
-        borderRadius: 8,
-        overflow: 'hidden',
+        textDecorationLine: 'underline',
     },
 });
+

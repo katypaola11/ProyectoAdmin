@@ -1,30 +1,28 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { supabase } from '../firebase/Config2'
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { supabase } from '../firebase/Config2';
 
 export default function LeerUsuariosScreen() {
-  const [datos, setdatos] = useState([])
+  const [datos, setdatos] = useState([]);
 
   async function leer() {
-    const { data, error } = await supabase
-      .from('Usuarios')
-      .select()
-    setdatos(data as any)
+    const { data, error } = await supabase.from('Usuarios').select();
+    setdatos(data as any);
   }
 
   useEffect(() => {
-    leer()
-  }, [])
+    leer();
+  }, []);
 
   type Usuario = {
-    cedula: string,
-    nombre: string,
-    apellido: string,
-    correo: string,
-    Telefono: string,
-    dirreccion: string,
-    contrasena: string
-  }
+    cedula: string;
+    nombre: string;
+    apellido: string;
+    correo: string;
+    Telefono: string;
+    dirreccion: string;
+    contrasena: string;
+  };
 
   return (
     <View style={styles.container}>
@@ -35,7 +33,9 @@ export default function LeerUsuariosScreen() {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }: { item: Usuario }) => (
           <View style={styles.card}>
-            <Text style={styles.nombre}>{item.nombre} {item.apellido}</Text>
+            <Text style={styles.nombre}>
+              👤 {item.nombre} {item.apellido}
+            </Text>
             <Text style={styles.info}>📧 {item.correo}</Text>
             <Text style={styles.info}>📞 {item.Telefono}</Text>
             <Text style={styles.info}>📍 {item.dirreccion}</Text>
@@ -44,42 +44,43 @@ export default function LeerUsuariosScreen() {
         contentContainerStyle={{ paddingBottom: 20 }}
       />
     </View>
-  )
+  );
 }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F3F4F6',
-    padding: 16,
+    backgroundColor: '#1a1a1a',
+    padding: 20,
   },
   titulo: {
     fontSize: 24,
-    fontWeight: '700',
-    color: '#1F2937',
-    marginBottom: 20,
+    fontWeight: 'bold',
+    color: '#fff',
     textAlign: 'center',
+    marginBottom: 20,
   },
   card: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 10,
+    backgroundColor: '#2c2c2c',
+    borderRadius: 12,
     padding: 16,
-    marginBottom: 12,
+    marginBottom: 15,
+    elevation: 4,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3, 
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
   },
   nombre: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#111827',
-    marginBottom: 6,
+    color: '#ffffff',
+    marginBottom: 8,
   },
   info: {
     fontSize: 14,
-    color: '#4B5563',
+    color: '#cccccc',
     marginBottom: 4,
   },
-})
+});

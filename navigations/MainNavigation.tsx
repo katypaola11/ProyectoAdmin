@@ -21,8 +21,7 @@ function MyTab() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Login" component={LoginScreen} />
-      <Tab.Screen name="Registro" component={RegistroAdmin}/>
-     
+      <Tab.Screen name="Registro" component={RegistroAdmin} />
     </Tab.Navigator>
   );
 }
@@ -30,9 +29,9 @@ function MyTab() {
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen 
-        name="Mytab" 
-        component={MyTab} 
+      <Stack.Screen
+        name="Mytab"
+        component={MyTab}
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Home" component={HomeScreen} />
@@ -42,16 +41,16 @@ function MyStack() {
       <Stack.Screen name="Editar" component={EditarScreen} />
       <Stack.Screen name="Eliminar" component={BorrarScreen} />
 
-      
+
     </Stack.Navigator>
   );
 }
 
-export default function NavegadorBottom(){
-    return (
-        <NavigationContainer>
-            <MyStack/>
-        </NavigationContainer>
+export default function NavegadorBottom() {
+  return (
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
 
-    )
+  )
 }
