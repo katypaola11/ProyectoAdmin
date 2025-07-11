@@ -2,17 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import { supabase } from '../firebase/Config2';
 
-type Compra = {
-  id: number;
-  Producto: string;
-  Marca: string;
-  Cantidad: number;
-  Estado: string;
-  Total: number;
-};
+
 
 export default function EditarScreen() {
+
   const [datos, setdatos] = useState<Compra[]>([]);
+
+  type Compra = {
+    id: number;
+    Pedido: string;
+    Marca: string;
+    Cantidad: number;
+    Estado: string;
+    Total: number;
+  };
+
 
   async function leer() {
     const { data, error } = await supabase.from('Respuestos').select();
@@ -53,7 +57,7 @@ export default function EditarScreen() {
           const esCompletado = item.Estado === 'Completado';
           return (
             <View style={styles.card}>
-              <Text style={styles.item}><Text style={styles.label}>Producto:</Text> {item.Producto}</Text>
+              <Text style={styles.item}><Text style={styles.label}>Pedido:</Text> {item.Pedido}</Text>
               <Text style={styles.item}><Text style={styles.label}>ID:</Text> {item.id}</Text>
               <Text style={styles.item}><Text style={styles.label}>Marca:</Text> {item.Marca}</Text>
               <Text style={styles.item}><Text style={styles.label}>Cantidad:</Text> {item.Cantidad}</Text>

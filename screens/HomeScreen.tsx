@@ -10,7 +10,7 @@ export default function HomeScreen({ navigation }: any) {
       <View style={styles.cardContainer}>
         <TouchableOpacity style={[styles.card, styles.createCard]} onPress={() => navigation.navigate("Guardar")}>
           <Text style={styles.cardIcon}>🚗</Text>
-          <Text style={styles.cardTitle}>Agregar Vehículo</Text>
+          <Text style={styles.cardTitle}>Agregar Repuesto</Text>
           <Text style={styles.cardDescription}>Registra autos nuevos en el sistema</Text>
         </TouchableOpacity>
 
