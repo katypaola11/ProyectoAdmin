@@ -29,13 +29,13 @@ export default function HomeScreen({ navigation }: any) {
         <TouchableOpacity style={[styles.card, styles.updateCard]} onPress={() => navigation.navigate("Editar")}>
           <Text style={styles.cardIcon}>✏️</Text>
           <Text style={styles.cardTitle}>Editar Pedido</Text>
-          <Text style={styles.cardDescription}>Actualiza el pedido</Text>
+          <Text style={styles.cardDescription}>Actualizar el pedido</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.card, styles.deleteCard]} onPress={() => navigation.navigate("Eliminar")}>
           <Text style={styles.cardIcon}>🗑️</Text>
           <Text style={styles.cardTitle}>Eliminar</Text>
-          <Text style={styles.cardDescription}>Borra vehículos, repuestos o usuarios</Text>
+          <Text style={styles.cardDescription}>Rechaza pedidos repuestos o usuarios</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

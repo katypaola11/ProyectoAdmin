@@ -6,7 +6,7 @@ import { supabase } from '../firebase/Config2';
 
 export default function EditarScreen() {
 
-  const [datos, setdatos] = useState<Compra[]>([]);
+ const [datos, setdatos] = useState<Compra[]>([]);
 
   type Compra = {
     id: number;
@@ -16,7 +16,6 @@ export default function EditarScreen() {
     Estado: string;
     Total: number;
   };
-
 
   async function leer() {
     const { data, error } = await supabase.from('Respuestos').select();
@@ -32,19 +31,36 @@ export default function EditarScreen() {
   }, []);
 
   async function cambiarEstado(id: number, nuevoEstado: string) {
-    const { error } = await supabase
-      .from('Respuestos')
-      .update({ Estado: nuevoEstado })
-      .eq('id', id);
+    
+    Alert.alert(
+      'Confirmar cambio',
+      '¿Desea confirmar el cambio de estado?',
+      [
+        {
+          text: 'Cancelar',
+          style: 'cancel',
+        },
+        {
+          text: 'Confirmar',
+          onPress: async () => {
+            const { error } = await supabase
+              .from('Respuestos')
+              .update({ Estado: nuevoEstado })
+              .eq('id', id);
 
-    if (error) {
-      Alert.alert('Error', 'No se pudo actualizar el estado.');
-      console.error(error);
-    } else {
-      Alert.alert('Éxito', 'Estado actualizado correctamente.');
-      leer();
-    }
+            if (error) {
+              Alert.alert('Error', 'No se pudo actualizar el estado.');
+              console.error(error);
+            } else {
+              Alert.alert('Éxito', 'Estado actualizado correctamente.');
+              leer();
+            }
+          },
+        },
+      ]
+    );
   }
+
 
   return (
     <View style={styles.container}>

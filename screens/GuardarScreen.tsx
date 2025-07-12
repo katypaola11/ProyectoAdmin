@@ -1,117 +1,173 @@
-import { Alert, StyleSheet, Text, TextInput, View, TouchableOpacity } from "react-native";
+import {
+  Alert,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import React, { useState } from "react";
-import { ref, set } from "firebase/database";
+import { get, ref, set, push } from "firebase/database";
 import { db } from "../firebase/Config";
+import { getAuth } from "firebase/auth";
 
 export default function GuardarScreens() {
-  const [marca, setmarca] = useState("");
-  const [cedula, setcedula] = useState("");
-  const [nombre, setnombre] = useState("");
-  const [edad, setedad] = useState(0);
-  const [correo, setcorreo] = useState("");
+  const [marca, setMarca] = useState("");
+  const [nombreRepuesto, setNombreRepuesto] = useState("");
+  const [imagen, setImagen] = useState("");
+  const [marcaRepuesto, setMarcaRepuesto] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [precio, setPrecio] = useState("");
+  const [stock, setStock] = useState("");
 
-  function guardar() {
-    set(ref(db, `${marca}/${cedula}`), {
-      username: nombre,
-      email: correo,
-      age: edad,
-    }).then(() => {
-      setcedula("");
-      setnombre("");
-      setedad(0);
-      setcorreo("");
-      Alert.alert("Éxito", "Datos guardados correctamente.");
-    });
-  }
+  const guardarRepuesto = async () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (!user || !user.email) {
+      Alert.alert("Error", "Usuario no autenticado");
+      return;
+    }
+
+    if (!marca || !nombreRepuesto || !imagen || !marcaRepuesto || !descripcion || !precio || !stock) {
+      Alert.alert("Error", "Por favor, completa todos los campos.");
+      return;
+    }
+
+    const userEmail = user.email;
+    const userId = `userId_${userEmail.split("@")[0]}`;
+
+    const nuevoRepuesto = {
+      marca,
+      nombre: nombreRepuesto,
+      imagen,
+      marcaRepuesto,
+      descripcion,
+      precio,
+      stock,
+      creadoPor: userEmail,
+      fecha: new Date().toISOString()
+    };
+
+    try {
+      // Referencia única para cada repuesto (usamos push para ID automático)
+      const repuestosRef = ref(db, `users/${userId}/repuestos`);
+      const nuevoRepuestoRef = push(repuestosRef);
+      await set(nuevoRepuestoRef, nuevoRepuesto);
+
+      Alert.alert("Éxito", "Repuesto guardado correctamente.");
+
+      // Limpiar campos
+      setMarca("");
+      setNombreRepuesto("");
+      setImagen("");
+      setMarcaRepuesto("");
+      setDescripcion("");
+      setPrecio("");
+      setStock("");
+    } catch (error) {
+      console.error("Error al guardar repuesto:", error);
+      Alert.alert("Error", "No se pudo guardar el repuesto. Intenta nuevamente.");
+    }
+  };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Registrar Vehículo</Text>
+    <ScrollView style={styles.container}>
+      <Text style={styles.title}>Registrar Repuesto</Text>
 
       <TextInput
         placeholder="Marca del vehículo"
-        onChangeText={setmarca}
+        onChangeText={setMarca}
         value={marca}
         style={styles.input}
         placeholderTextColor="#aaa"
       />
 
       <TextInput
-        placeholder="Cédula del propietario"
-        onChangeText={setcedula}
-        value={cedula}
+        placeholder="Nombre del repuesto"
+        onChangeText={setNombreRepuesto}
+        value={nombreRepuesto}
         style={styles.input}
         placeholderTextColor="#aaa"
       />
 
       <TextInput
-        placeholder="Nombre del propietario"
-        onChangeText={setnombre}
-        value={nombre}
+        placeholder="URL de la imagen"
+        onChangeText={setImagen}
+        value={imagen}
         style={styles.input}
         placeholderTextColor="#aaa"
       />
 
       <TextInput
-        placeholder="Edad"
-        onChangeText={(texto) => setedad(+texto)}
-        value={edad ? edad.toString() : ""}
+        placeholder="Marca del repuesto"
+        onChangeText={setMarcaRepuesto}
+        value={marcaRepuesto}
+        style={styles.input}
+        placeholderTextColor="#aaa"
+      />
+
+      <TextInput
+        placeholder="Descripción del repuesto"
+        onChangeText={setDescripcion}
+        value={descripcion}
+        style={styles.input}
+        placeholderTextColor="#aaa"
+        multiline={true}
+        numberOfLines={3}
+      />
+
+      <TextInput
+        placeholder="Precio"
+        onChangeText={setPrecio}
+        value={precio}
         keyboardType="numeric"
         style={styles.input}
         placeholderTextColor="#aaa"
       />
 
       <TextInput
-        placeholder="Correo electrónico"
-        onChangeText={setcorreo}
-        value={correo}
+        placeholder="Stock disponible"
+        onChangeText={setStock}
+        value={stock}
+        keyboardType="numeric"
         style={styles.input}
         placeholderTextColor="#aaa"
-        keyboardType="email-address"
-        autoCapitalize="none"
       />
 
-      <TouchableOpacity style={styles.button} onPress={guardar}>
-        <Text style={styles.buttonText}>Guardar</Text>
+      <TouchableOpacity style={styles.button} onPress={guardarRepuesto}>
+        <Text style={styles.buttonText}>Guardar Repuesto</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#1a1a1a",
     padding: 20,
-    justifyContent: "center",
+    backgroundColor: "#fff",
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#fff",
-    marginBottom: 30,
+    marginBottom: 20,
     textAlign: "center",
   },
   input: {
-    backgroundColor: "#2c2c2c",
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 15,
-    color: "#fff",
-    fontSize: 16,
     borderWidth: 1,
-    borderColor: "#444",
+    borderColor: "#ccc",
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 15,
   },
   button: {
-    backgroundColor: "#4CAF50",
+    backgroundColor: "#007bff",
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 8,
     alignItems: "center",
     marginTop: 10,
   },
   buttonText: {
     color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
+    fontWeight: "bold",
   },
 });
