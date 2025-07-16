@@ -20,7 +20,6 @@ export default function LeerRepuestosScreen() {
         </View>
       }
       data={secciones}
-      keyExtractor={(item) => item.titulo}
       renderItem={({ item }) => (
         <View style={styles.brandSection}>
           <View style={styles.brandHeader}>

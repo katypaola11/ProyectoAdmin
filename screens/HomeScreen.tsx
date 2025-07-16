@@ -14,10 +14,11 @@ export default function HomeScreen({ navigation }: any) {
           <Text style={styles.cardDescription}>Registra autos nuevos en el sistema</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.card, styles.readCard]} onPress={() => navigation.navigate("Repuestos")}>
+
+        <TouchableOpacity style={[styles.card, styles.readCard]} onPress={() => navigation.navigate("Marca")}>
           <Text style={styles.cardIcon}>🔧</Text>
-          <Text style={styles.cardTitle}>Repuestos</Text>
-          <Text style={styles.cardDescription}>Consulta y administra inventario</Text>
+          <Text style={styles.cardTitle}>Repuesto</Text>
+          <Text style={styles.cardDescription}>Consulta y Edision de repuestos</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.card, styles.readCard]} onPress={() => navigation.navigate("Usuarios")}>
@@ -32,11 +33,7 @@ export default function HomeScreen({ navigation }: any) {
           <Text style={styles.cardDescription}>Actualizar el pedido</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.card, styles.deleteCard]} onPress={() => navigation.navigate("Eliminar")}>
-          <Text style={styles.cardIcon}>🗑️</Text>
-          <Text style={styles.cardTitle}>Eliminar</Text>
-          <Text style={styles.cardDescription}>Rechaza pedidos repuestos o usuarios</Text>
-        </TouchableOpacity>
+        
       </View>
     </ScrollView>
   );

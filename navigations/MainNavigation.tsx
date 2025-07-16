@@ -10,7 +10,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen";
 import GuardarScreens from "../screens/GuardarScreen";
 import EditarScreen from "../screens/EditarScreen";
-import BorrarScreen from "../screens/BorrarScreen";
+import MarcaScreen from "../screens/MarcaScreen";
+
+
 
 
 
@@ -22,6 +24,7 @@ function MyTab() {
     <Tab.Navigator>
       <Tab.Screen name="Login" component={LoginScreen} />
       <Tab.Screen name="Registro" component={RegistroAdmin} />
+      
     </Tab.Navigator>
   );
 }
@@ -39,7 +42,10 @@ function MyStack() {
       <Stack.Screen name="Repuestos" component={LeerRepuestosScreen} />
       <Stack.Screen name="Guardar" component={GuardarScreens} />
       <Stack.Screen name="Editar" component={EditarScreen} />
-      <Stack.Screen name="Eliminar" component={BorrarScreen} />
+      <Stack.Screen name="Marca" component={MarcaScreen} />
+     
+
+ 
 
 
     </Stack.Navigator>

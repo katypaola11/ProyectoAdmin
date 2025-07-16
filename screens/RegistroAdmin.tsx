@@ -30,6 +30,10 @@ export default function RegistroAdmin({ navigation }: any) {
             .then((userCredential) => {
                 Alert.alert('Éxito', 'Usuario registrado correctamente');
                 navigation.navigate('Login');
+                setNombreCompleto("");
+                setEmail("");
+                setPassword("");
+                setConfirmarPassword("");
             })
             .catch((error) => {
                 let errorCode = error.code;
@@ -50,6 +54,9 @@ export default function RegistroAdmin({ navigation }: any) {
                 }
 
                 Alert.alert(errorCode, errorMessage);
+
+
+
             });
     }
 
