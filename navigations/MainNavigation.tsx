@@ -11,6 +11,7 @@ import HomeScreen from "../screens/HomeScreen";
 import GuardarScreens from "../screens/GuardarScreen";
 import EditarScreen from "../screens/EditarScreen";
 import MarcaScreen from "../screens/MarcaScreen";
+import HistorialScreen from "../screens/HistorialScreen";
 
 
 
@@ -24,7 +25,7 @@ function MyTab() {
     <Tab.Navigator>
       <Tab.Screen name="Login" component={LoginScreen} />
       <Tab.Screen name="Registro" component={RegistroAdmin} />
-      
+
     </Tab.Navigator>
   );
 }
@@ -43,10 +44,7 @@ function MyStack() {
       <Stack.Screen name="Guardar" component={GuardarScreens} />
       <Stack.Screen name="Editar" component={EditarScreen} />
       <Stack.Screen name="Marca" component={MarcaScreen} />
-     
-
- 
-
+      <Stack.Screen name="Historial" component={HistorialScreen} />
 
     </Stack.Navigator>
   );

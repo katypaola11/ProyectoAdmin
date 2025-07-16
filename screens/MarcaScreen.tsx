@@ -45,7 +45,7 @@ export default function MarcaScreen({ navigation }: any) {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>Leer</Text>
+        <Text style={styles.headerText}>Repuestos New</Text>
         <View style={styles.headerLine} />
         <Text style={styles.subHeaderText}>Listado de repuestos</Text>
       </View>

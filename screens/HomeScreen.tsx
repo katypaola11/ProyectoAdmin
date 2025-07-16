@@ -27,6 +27,12 @@ export default function HomeScreen({ navigation }: any) {
           <Text style={styles.cardDescription}>Revisa  información de usuarios</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity style={[styles.card, styles.readCard]} onPress={() => navigation.navigate("Historial")}>
+          <Text style={styles.cardIcon}>👤</Text>
+          <Text style={styles.cardTitle}>Historial</Text>
+          <Text style={styles.cardDescription}>Revisa las compras del Usuario</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity style={[styles.card, styles.updateCard]} onPress={() => navigation.navigate("Editar")}>
           <Text style={styles.cardIcon}>✏️</Text>
           <Text style={styles.cardTitle}>Editar Pedido</Text>
