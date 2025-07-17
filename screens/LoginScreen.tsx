@@ -7,8 +7,10 @@ import {
     TouchableOpacity,
     StyleSheet,
     Alert,
+    Button,
 } from 'react-native';
 import { auth } from '../firebase/Config';
+
 
 export default function LoginScreen({ navigation }: any) {
     const [user, setUser] = useState('');
@@ -75,8 +77,10 @@ export default function LoginScreen({ navigation }: any) {
                 placeholderTextColor="#aaa"
             />
 
+            
+
             <TouchableOpacity style={styles.button} onPress={login}>
-                <Text style={styles.buttonText}>Entrar</Text>
+                <Text style={styles.buttonText}>Acceder</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={restablecer}>

@@ -6,7 +6,7 @@ import { supabase } from '../firebase/Config2';
 
 export default function EditarScreen() {
 
- const [datos, setdatos] = useState<Compra[]>([]);
+  const [datos, setdatos] = useState<Compra[]>([]);
 
   type Compra = {
     id: number;
@@ -31,7 +31,7 @@ export default function EditarScreen() {
   }, []);
 
   async function cambiarEstado(id: number, nuevoEstado: string) {
-    
+
     Alert.alert(
       'Confirmar cambio',
       '¿Desea confirmar el cambio de estado?',
@@ -144,12 +144,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   estadoPendiente: {
-    backgroundColor: '#e74c3c33', // rojo suave
+    backgroundColor: '#e74c3c33',
     borderColor: '#e74c3c',
     borderWidth: 1,
   },
   estadoCompletado: {
-    backgroundColor: '#2ecc7133', // verde suave
+    backgroundColor: '#2ecc7133',
     borderColor: '#2ecc71',
     borderWidth: 1,
   },

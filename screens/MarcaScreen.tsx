@@ -62,18 +62,24 @@ export default function MarcaScreen({ navigation }: any) {
             </View>
 
             <View style={{ padding: 16 }}>
-              <Text style={{ color: '#fff', fontWeight: '600', fontSize: 16 }}>{item.nombreRepuesto}</Text>
-
+              <Text style={{ color: '#ffffff', fontSize: 17, fontWeight: '600', marginBottom: 6 }}>
+                {item.nombreRepuesto}
+              </Text>
               <Image
                 source={{ uri: item.imagen }}
-                style={{ width: '100%', height: 150, marginVertical: 12, borderRadius: 8 }}
+                style={{
+                  width: '100%',
+                  height: 160,
+                  borderRadius: 12,
+                  marginBottom: 12,
+                  backgroundColor: '#2c2c2c',
+                }}
                 resizeMode="cover"
               />
-
-              <Text style={{ color: '#ccc', marginBottom: 4 }}>{item.marcaRepuesto}</Text>
-              <Text style={{ color: '#ccc', marginBottom: 4 }}>{item.descripcion}</Text>
-              <Text style={{ color: '#ccc', marginBottom: 4 }}>Precio: ${item.precio}</Text>
-              <Text style={{ color: '#ccc' }}>Stock: {item.stock}</Text>
+              <Text style={{ color: '#fff', marginBottom: 4 }}>{item.marcaRepuesto}</Text>
+              <Text style={{ color: '#fff', marginBottom: 4 }}>{item.descripcion}</Text>
+              <Text style={{ color: '#fff', marginBottom: 4 }}>💵 Precio: ${item.precio}</Text>
+              <Text style={{ color: '#fff' }}>📦 Stock: {item.stock}</Text>
 
               <TouchableOpacity
                 style={styles.editButton}

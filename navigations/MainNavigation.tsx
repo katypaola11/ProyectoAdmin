@@ -1,5 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { AntDesign } from '@expo/vector-icons';
 
 
 import LoginScreen from '../screens/LoginScreen';
@@ -14,10 +15,7 @@ import MarcaScreen from "../screens/MarcaScreen";
 import HistorialScreen from "../screens/HistorialScreen";
 import RepuestoEditableScreen from "../screens/RepuestoEditableScreen";
 import PerfilScreen from "../screens/PerfilScreen";
-
-
-
-
+import UbicacionScreen from "../screens/UbicacionScreen";
 
 
 const Stack = createStackNavigator();
@@ -26,8 +24,8 @@ const Tab = createBottomTabNavigator();
 function MyTab() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Login" component={LoginScreen} />
-      <Tab.Screen name="Registro" component={RegistroAdmin} />
+      <Tab.Screen name="Login" component={LoginScreen} options={{ tabBarIcon: () => (<AntDesign name="login" size={20} color="black" />) }} />
+      <Tab.Screen name="Registro" component={RegistroAdmin} options={{ tabBarIcon: () => (<AntDesign name="edit" size={20} color="black" />) }}/>
 
     </Tab.Navigator>
   );
@@ -41,17 +39,15 @@ function MyStack() {
         component={MyTab}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="Home" component={HomeScreen}/>
+      <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Usuarios" component={LeerUsuariosScreen} />
       <Stack.Screen name="Repuestos" component={LeerRepuestosScreen} />
       <Stack.Screen name="Guardar" component={GuardarScreens} />
       <Stack.Screen name="Editar" component={EditarScreen} />
       <Stack.Screen name="Marca" component={MarcaScreen} />
       <Stack.Screen name="Historial" component={HistorialScreen} />
-
-
       <Stack.Screen name="RepuestoEditable" component={RepuestoEditableScreen} />
-
+      <Stack.Screen name="Ubicacion" component={UbicacionScreen} />
       <Stack.Screen name="Perfil" component={PerfilScreen} />
 
 
