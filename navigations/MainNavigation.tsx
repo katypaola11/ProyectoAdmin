@@ -12,6 +12,9 @@ import GuardarScreens from "../screens/GuardarScreen";
 import EditarScreen from "../screens/EditarScreen";
 import MarcaScreen from "../screens/MarcaScreen";
 import HistorialScreen from "../screens/HistorialScreen";
+import RepuestoEditableScreen from "../screens/RepuestoEditableScreen";
+import PerfilScreen from "../screens/PerfilScreen";
+
 
 
 
@@ -38,13 +41,20 @@ function MyStack() {
         component={MyTab}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Home" component={HomeScreen}/>
       <Stack.Screen name="Usuarios" component={LeerUsuariosScreen} />
       <Stack.Screen name="Repuestos" component={LeerRepuestosScreen} />
       <Stack.Screen name="Guardar" component={GuardarScreens} />
       <Stack.Screen name="Editar" component={EditarScreen} />
       <Stack.Screen name="Marca" component={MarcaScreen} />
       <Stack.Screen name="Historial" component={HistorialScreen} />
+
+
+      <Stack.Screen name="RepuestoEditable" component={RepuestoEditableScreen} />
+
+      <Stack.Screen name="Perfil" component={PerfilScreen} />
+
+
 
     </Stack.Navigator>
   );

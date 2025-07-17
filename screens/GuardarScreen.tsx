@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  View,
 } from "react-native";
 import React, { useState } from "react";
 import { get, ref, set, push } from "firebase/database";
@@ -50,14 +51,12 @@ export default function GuardarScreens() {
     };
 
     try {
-      // Referencia única para cada repuesto (usamos push para ID automático)
+
       const repuestosRef = ref(db, `users/${userId}/repuestos`);
       const nuevoRepuestoRef = push(repuestosRef);
       await set(nuevoRepuestoRef, nuevoRepuesto);
-
       Alert.alert("Éxito", "Repuesto guardado correctamente.");
 
-      // Limpiar campos
       setMarca("");
       setNombreRepuesto("");
       setImagen("");
@@ -72,102 +71,254 @@ export default function GuardarScreens() {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Registrar Repuesto</Text>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Registrar Repuesto</Text>
+        <Text style={styles.subtitle}>Completa la información del repuesto</Text>
+        <View style={styles.headerDivider} />
+      </View>
 
-      <TextInput
-        placeholder="Marca del vehículo"
-        onChangeText={setMarca}
-        value={marca}
-        style={styles.input}
-        placeholderTextColor="#aaa"
-      />
+      <View style={styles.formContainer}>
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Información del Vehículo</Text>
+          
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>Marca del vehículo</Text>
+            <TextInput
+              placeholder="Ej: Toyota, Honda, Ford..."
+              onChangeText={setMarca}
+              value={marca}
+              style={styles.input}
+              placeholderTextColor="#6B7280"
+            />
+          </View>
+        </View>
 
-      <TextInput
-        placeholder="Nombre del repuesto"
-        onChangeText={setNombreRepuesto}
-        value={nombreRepuesto}
-        style={styles.input}
-        placeholderTextColor="#aaa"
-      />
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Detalles del Repuesto</Text>
+          
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>Nombre del repuesto</Text>
+            <TextInput
+              placeholder="Ej: Filtro de aceite, Pastillas de freno..."
+              onChangeText={setNombreRepuesto}
+              value={nombreRepuesto}
+              style={styles.input}
+              placeholderTextColor="#6B7280"
+            />
+          </View>
 
-      <TextInput
-        placeholder="URL de la imagen"
-        onChangeText={setImagen}
-        value={imagen}
-        style={styles.input}
-        placeholderTextColor="#aaa"
-      />
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>Marca del repuesto</Text>
+            <TextInput
+              placeholder="Ej: Bosch, NGK, Denso..."
+              onChangeText={setMarcaRepuesto}
+              value={marcaRepuesto}
+              style={styles.input}
+              placeholderTextColor="#6B7280"
+            />
+          </View>
 
-      <TextInput
-        placeholder="Marca del repuesto"
-        onChangeText={setMarcaRepuesto}
-        value={marcaRepuesto}
-        style={styles.input}
-        placeholderTextColor="#aaa"
-      />
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>URL de la imagen</Text>
+            <TextInput
+              placeholder="https://ejemplo.com/imagen.jpg"
+              onChangeText={setImagen}
+              value={imagen}
+              style={styles.input}
+              placeholderTextColor="#6B7280"
+              autoCapitalize="none"
+              keyboardType="url"
+            />
+          </View>
 
-      <TextInput
-        placeholder="Descripción del repuesto"
-        onChangeText={setDescripcion}
-        value={descripcion}
-        style={styles.input}
-        placeholderTextColor="#aaa"
-        multiline={true}
-        numberOfLines={3}
-      />
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>Descripción del repuesto</Text>
+            <TextInput
+              placeholder="Describe las características, compatibilidad y detalles importantes..."
+              onChangeText={setDescripcion}
+              value={descripcion}
+              style={[styles.input, styles.textArea]}
+              placeholderTextColor="#6B7280"
+              multiline={true}
+              numberOfLines={4}
+              textAlignVertical="top"
+            />
+          </View>
+        </View>
 
-      <TextInput
-        placeholder="Precio"
-        onChangeText={setPrecio}
-        value={precio}
-        keyboardType="numeric"
-        style={styles.input}
-        placeholderTextColor="#aaa"
-      />
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Información Comercial</Text>
+          
+          <View style={styles.row}>
+            <View style={[styles.inputContainer, styles.halfWidth]}>
+              <Text style={styles.label}>Precio ($)</Text>
+              <TextInput
+                placeholder="0.00"
+                onChangeText={setPrecio}
+                value={precio}
+                keyboardType="numeric"
+                style={styles.input}
+                placeholderTextColor="#6B7280"
+              />
+            </View>
 
-      <TextInput
-        placeholder="Stock disponible"
-        onChangeText={setStock}
-        value={stock}
-        keyboardType="numeric"
-        style={styles.input}
-        placeholderTextColor="#aaa"
-      />
+            <View style={[styles.inputContainer, styles.halfWidth]}>
+              <Text style={styles.label}>Stock disponible</Text>
+              <TextInput
+                placeholder="0"
+                onChangeText={setStock}
+                value={stock}
+                keyboardType="numeric"
+                style={styles.input}
+                placeholderTextColor="#6B7280"
+              />
+            </View>
+          </View>
+        </View>
 
-      <TouchableOpacity style={styles.button} onPress={guardarRepuesto}>
-        <Text style={styles.buttonText}>Guardar Repuesto</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={guardarRepuesto}>
+          <Text style={styles.buttonText}>💾 Guardar Repuesto</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
-    backgroundColor: "#fff",
+    flex: 1,
+    backgroundColor: "#0F172A", 
+  },
+  header: {
+    backgroundColor: "#1E293B", 
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    paddingBottom: 24,
+    borderBottomWidth: 2,
+    borderBottomColor: "#22C55E", 
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
+    fontSize: 28,
+    fontWeight: "700",
+    color: "#F8FAFC", 
     textAlign: "center",
+    marginBottom: 4,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: "#94A3B8", 
+    textAlign: "center",
+    marginBottom: 16,
+  },
+  headerDivider: {
+    width: 60,
+    height: 4,
+    backgroundColor: "#22C55E", 
+    alignSelf: "center",
+    borderRadius: 2,
+  },
+  formContainer: {
+    padding: 20,
+  },
+  section: {
+    marginBottom: 28,
+    backgroundColor: "#1E293B", 
+    borderRadius: 16,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: "#374151", 
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#22C55E", 
+    marginBottom: 16,
+    paddingBottom: 8,
+    borderBottomWidth: 2,
+    borderBottomColor: "#22C55E", 
+    textTransform: "uppercase",
+    letterSpacing: 0.5,
+  },
+  inputContainer: {
+    marginBottom: 16,
+  },
+  label: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#E2E8F0", 
+    marginBottom: 8,
+    textTransform: "uppercase",
+    letterSpacing: 0.8,
   },
   input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 8,
-    padding: 10,
-    marginBottom: 15,
+    borderWidth: 2,
+    borderColor: "#374151", 
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    fontSize: 16,
+    backgroundColor: "#111827", 
+    color: "#F8FAFC", 
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  textArea: {
+    minHeight: 100,
+    paddingTop: 14,
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: 12,
+  },
+  halfWidth: {
+    flex: 1,
   },
   button: {
-    backgroundColor: "#007bff",
-    padding: 15,
-    borderRadius: 8,
+    backgroundColor: "#22C55E", 
+    paddingVertical: 18,
+    paddingHorizontal: 24,
+    borderRadius: 16,
     alignItems: "center",
-    marginTop: 10,
+    marginTop: 12,
+    shadowColor: "#22C55E",
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 12,
+    elevation: 8,
+    borderWidth: 2,
+    borderColor: "#16A34A", 
   },
   buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
+    color: "#000000", 
+    fontSize: 18,
+    fontWeight: "700",
+    letterSpacing: 0.5,
   },
 });
