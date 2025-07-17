@@ -39,6 +39,13 @@ export default function HomeScreen({ navigation }: any) {
           <Text style={styles.cardDescription}>Actualizar el pedido</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity style={[styles.card, styles.updateCard]} onPress={() => navigation.navigate("Perfil")}>
+          <Text style={styles.cardIcon}>👤</Text>
+          <Text style={styles.cardTitle}>Perfil</Text>
+          <Text style={styles.cardDescription}>Ver perfil</Text>
+        </TouchableOpacity>
+
+
         
       </View>
     </ScrollView>
